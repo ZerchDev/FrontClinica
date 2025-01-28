@@ -1,0 +1,31 @@
+<h2 class="mb-5">Mis medicos</h2>
+<table class="table table-hober">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>NOMBRE</th>
+            <th>APELLIDO PATERNO</th>
+            <th>APELLIDO MATERNO</th>
+            <th>TELEFONO</th>
+            <th>CEDULA</th>
+            <th>EMAIL</th>
+            <th>ESPECIALIDAD</th>
+            <th>ACTIVO</th>
+        </tr>
+    </thead>
+    <tbody>
+        @for (medicos of medicos; track medicos.id) {
+            <tr>
+                <td>{{medicos.id}}</td>
+                <td>{{medicos.nombre}}</td>
+                <td>{{medicos.apellidoPaterno}}</td>
+                <td>{{medicos.apellidoMaterno}}</td>
+                <td>{{medicos.telefono}}</td>
+                <td>{{medicos.cedula}}</td>
+                <td>{{medicos.email}}</td>
+                <td>{{medicos.especialidad}}</td>
+                <td>{{medicos.activo}}</td>
+            </tr>
+        }
+    </tbody>
+</table>
