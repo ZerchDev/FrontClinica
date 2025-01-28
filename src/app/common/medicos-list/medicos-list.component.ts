@@ -1,10 +1,12 @@
+import { DatePipe } from '@angular/common';
 import { MedicService } from './../../services/medic.service';
 import { Component, inject, OnInit } from '@angular/core';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-medicos-list',
   standalone: true,
-  imports: [],
+  imports: [DatePipe,RouterModule],
   templateUrl: './medicos-list.component.html',
   styleUrl: './medicos-list.component.css'
 })

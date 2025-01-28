@@ -1,0 +1,49 @@
+<h2 class="mb-5">Nuevo Medico</h2>
+
+<div class="row row-cols-3 justify-content-center">
+    <form [formGroup]="form" (ngSubmit)="create()"> 
+        <div class="mb-3">
+            <label for="nombre">Nombre</label>
+            <input id="nombre" type="text" placeholder="Nombre" class="form-control"
+            formControlName="nombre">
+    
+            <label for="apellidopaterno">Apellido Paterno</label>
+            <input id="apellidopaterno" type="text" placeholder="Apellido Paterno" class="form-control"
+            formControlName="apellidopaterno">
+    
+            <label for="apellidomaterno">Apellido Materno</label>
+            <input id="apellidomaterno" type="text" placeholder="Apellido Materno" class="form-control"
+            formControlName="apellidomaterno">
+    
+            <label for="telefono">Telefono</label>
+            <input id="telefono" type="number" placeholder="Telefono" class="form-control"
+            formControlName="telefono">
+    
+            <label for="cedula">Cedula</label>
+            <input id="cedula" type="text" placeholder="Cedula" class="form-control"
+            formControlName="cedula">
+    
+            <label for="email">Email</label>
+            <input id="email" type="email" placeholder="Email" class="form-control"
+            formControlName="email">
+    
+            <label for="especialidad">Especialidad</label>
+            <input id="especialidad" type="text" placeholder="Especialidad" class="form-control"
+            formControlName="especialidad">
+    
+            <label for="activo">Activo</label>
+            <input id="activo" type="text" placeholder="Activo" class="form-control"
+            formControlName="activo">
+    
+            <div class="text-end">
+                <button class="btn btn-light ms-2">
+                    Registrar
+                </button>
+    
+                <button type="button" class="btn btn-primary ms-2" routerLink="/">
+                    Cancelar
+                </button>
+            </div>
+        </div>
+    </form>
+</div>

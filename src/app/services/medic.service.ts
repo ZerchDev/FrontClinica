@@ -11,4 +11,7 @@ export class MedicService {
   list(){
     return this.http.get('http://localhost:8081/api/mostrarmedicosnormal');
   }
+  create(medico:any){
+    return this.http.post('http://localhost:8081/api/guardarmedico',medico);
+  }
 }
