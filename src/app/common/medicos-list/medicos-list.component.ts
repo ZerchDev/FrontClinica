@@ -2,6 +2,7 @@ import { DatePipe } from '@angular/common';
 import { MedicService } from './../../services/medic.service';
 import { Component, inject, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { Medico } from '../../model/medico.interface';
 
 @Component({
   selector: 'app-medicos-list',
@@ -13,11 +14,11 @@ import { RouterModule } from '@angular/router';
 export default class MedicosListComponent implements OnInit{
   private medicService=inject(MedicService)
 
-  medicos:any[] = [];
+  medicos:Medico[] = [];
 
 ngOnInit(): void {
     this.medicService.list()
-    .subscribe((medicos:any)=>{
+    .subscribe(medicos=>{
       this.medicos=medicos;
     });
 }

@@ -24,13 +24,25 @@
             <tr>
                 <td>{{medicos.id}}</td>
                 <td>{{medicos.nombre}}</td>
-                <td>{{medicos.apellidoPaterno}}</td>
-                <td>{{medicos.apellidoMaterno}}</td>
+                <td>{{medicos.apellidopaterno}}</td>
+                <td>{{medicos.apellidomaterno}}</td>
                 <td>{{medicos.telefono}}</td>
                 <td>{{medicos.cedula}}</td>
                 <td>{{medicos.email}}</td>
                 <td>{{medicos.especialidad}}</td>
                 <td>{{medicos.activo}}</td>
+
+                <td class="text-end">
+                <div class="btn-group">
+                    
+                        <button class="btn btn-primary" [routerLink]="(medicos.id)">
+                            Editar
+                        </button>
+                        <button class="btn btn-danger">
+                            Eliminar
+                        </button>
+                </div>
+            </td>
             </tr>
         }
     </tbody>
