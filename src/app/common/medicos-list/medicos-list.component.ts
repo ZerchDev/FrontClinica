@@ -1,7 +1,7 @@
 import { DatePipe } from '@angular/common';
 import { MedicService } from './../../services/medic.service';
 import { Component, inject, OnInit } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule  } from '@angular/router';
 import { Medico } from '../../model/medico.interface';
 
 @Component({
@@ -17,9 +17,21 @@ export default class MedicosListComponent implements OnInit{
   medicos:Medico[] = [];
 
 ngOnInit(): void {
-    this.medicService.list()
+    this.loadAll();
+}
+
+loadAll(){
+  this.medicService.list()
     .subscribe(medicos=>{
       this.medicos=medicos;
     });
+
+}
+
+deleteMedico(medico:Medico){              
+  this.medicService.delete(medico.id)
+  .subscribe(()=>{
+    this.loadAll();
+  });
 }
 }

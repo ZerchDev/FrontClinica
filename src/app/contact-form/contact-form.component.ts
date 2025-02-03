@@ -1,6 +1,6 @@
 import { Medico } from './../model/medico.interface';
 import { Component, inject, OnInit } from '@angular/core';
-import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { MedicService } from '../services/medic.service';
 
@@ -19,38 +19,57 @@ export default class ContactFormComponent implements OnInit{
   private route=inject(ActivatedRoute);
   private medicoService=inject(MedicService);
 
-  form=this.fb.group(
-    {
-      nombre:['',[Validators.required]],
-      apellidopaterno:['',[Validators.required]],
-      apellidomaterno:['',[Validators.required]],
-      telefono:['',[Validators.required]],
-      cedula:['',[Validators.required]],
-      email:['',[Validators.required]],
-      especialidad:['',[Validators.required]],
-      activo:['',[Validators.required]]
-    }
-  );
+  form?:FormGroup;
+  medico?:Medico;
 
   ngOnInit(): void {
     const id =this.route.snapshot.paramMap.get('id');
 
     if(id){
-      this.medicoService.get(parseInt(id)).subscribe
-      (medico=>
-        {console.log(medico)
+      this.medicoService.get(parseInt(id))
+      .subscribe(medico=>{
+        this.medico=medico;
+        this.form=this.fb.group({
+          nombre:[medico.nombre,[Validators.required]],
+          apellidopaterno:[medico.apellidopaterno,[Validators.required]],
+          apellidomaterno:[medico.apellidopaterno,[Validators.required]],
+          telefono:[medico.telefono,[Validators.required]],
+          cedula:[medico.cedula,[Validators.required]],
+          email:[medico.email,[Validators.required]],
+          especialidad:[medico.especialidad,[Validators.required]],
+          activo:[medico.activo,[Validators.required]],
+
+        });
       })
+    }else{
+      this.form=this.fb.group({
+        nombre:['',[Validators.required]],
+        apellidopaterno:['',[Validators.required]],
+        apellidomaterno:['',[Validators.required]],
+        telefono:['',[Validators.required]],
+        cedula:['',[Validators.required]],
+        email:['',[Validators.required]],
+        especialidad:['',[Validators.required]],
+        activo:['',[Validators.required]],
+
+      });
     }
   }
 
   
   create(){
-    const medico=this.form.value;
-    this.medicoService.create(medico)
-    .subscribe(()=>{
-        this.router.navigate(['/']);
-      }
-    );
+    const medicoForm=this.form!.value;
     
+    if(this.medico){
+      this.medicoService.update(this.medico.id,medicoForm)
+      .subscribe(()=>{
+        this.router.navigate(['/']);
+      });
+    }else{
+      this.medicoService.create(medicoForm)
+      .subscribe(()=>{
+        this.router.navigate(['/']);
+      });
+    }
   }
 }

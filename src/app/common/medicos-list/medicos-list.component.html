@@ -35,10 +35,10 @@
                 <td class="text-end">
                 <div class="btn-group">
                     
-                        <button class="btn btn-primary" [routerLink]="(medicos.id)">
+                        <button class="btn btn-primary" [routerLink]="[medicos.id,'edit']">
                             Editar
                         </button>
-                        <button class="btn btn-danger">
+                        <button class="btn btn-danger"(click)="deleteMedico(medicos)">
                             Eliminar
                         </button>
                 </div>
