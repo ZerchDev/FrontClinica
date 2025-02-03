@@ -1,5 +1,6 @@
 import { Routes } from '@angular/router';
 
+  
 export const routes: Routes = [
 
     {
@@ -11,7 +12,7 @@ export const routes: Routes = [
         loadComponent:()=> import ('./contact-form/contact-form.component')
     },
     {
-        path: 'id/edit',
+        path: ':id/edit',
         loadComponent:()=> import ('./contact-form/contact-form.component')
     }
 ];

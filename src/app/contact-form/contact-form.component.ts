@@ -30,6 +30,7 @@ export default class ContactFormComponent implements OnInit{
       .subscribe(medico=>{
         this.medico=medico;
         this.form=this.fb.group({
+          id:[medico.id,[Validators.required]],
           nombre:[medico.nombre,[Validators.required]],
           apellidopaterno:[medico.apellidopaterno,[Validators.required]],
           apellidomaterno:[medico.apellidopaterno,[Validators.required]],
@@ -43,6 +44,7 @@ export default class ContactFormComponent implements OnInit{
       })
     }else{
       this.form=this.fb.group({
+        id:['',[Validators.required]],
         nombre:['',[Validators.required]],
         apellidopaterno:['',[Validators.required]],
         apellidomaterno:['',[Validators.required]],
